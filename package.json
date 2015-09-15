@@ -1,0 +1,26 @@
+{
+  "name": "react-hoisted-state",
+  "version": "0.0.0",
+  "description": "nest meta-data inside your react-tree and get notified on state change ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nikhedonia/react-hoisted-state.git"
+  },
+  "keywords": [
+    "meta",
+    "data",
+    "state",
+    "hoist",
+    "react",
+    "notification"
+  ],
+  "author": "Gaetano Checinski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikhedonia/react-hoisted-state/issues"
+  }
+}
