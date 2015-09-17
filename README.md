@@ -5,34 +5,20 @@ Embed and extract State from The React Tree
 #Examples
 
 ```js
-import {Hoist,State} from 'react-hoisted-state'
-
-
-function visit(obj,event){
-  console.log(obj,event); // events : ['update','mount','unmount']
-}
-
-React.render(
-  <Hoist visit={visit} >
-    <div>
-      <State title="test" />
-      <div>
-        <State title="test2" />
-      </div>
-    </div>
-  </Hoist>,
-  elem
-);
-
-```
-
-```js
 
 var keywords= [];
 
 function visit(obj,event){
+  switch(event){
+    case 'mount':
+    case 'unmount' :
+    case 'render' :
+      //`this` is the component, do sth. with it...
+    break;
+  }
+
   if(obj.keywords) keywords = keywords.concat(keywords);
-  //`this` is the react component
+
 }
 
 const Title = ({children})=>(
