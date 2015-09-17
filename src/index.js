@@ -14,7 +14,7 @@ export class State extends Component {
          this,
          this.props
     );
-    return <div/>;
+    return null;
   }
 }
 
@@ -27,15 +27,18 @@ function hoister(visitor) {
 export class Hoist extends Component {
 
   static childContextTypes = { hoistedState : PropTypes.object }
+  static propTypes = {
+    visit : PropTypes.func
+  }
 
   getChildContext () {
     return {
-      hoistedState:hoister(this.props.match)
+      hoistedState:hoister(this.props.visit)
     }
   }
 
   render () {
-    return <div>{this.props.children}</div>
+    return React.Children.only(this.props.children);
   }
 
 }

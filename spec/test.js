@@ -12,14 +12,14 @@ describe('hoisted-state-tests', ()=> {
 
 
     renderToString(
-      <Hoist match={visit} >
+      <Hoist visit={visit} >
         <div>
           <State id={1} />
           <div>
             <State id={2} />
           </div>
+          <State id={3}/>
         </div>
-        <State id={3}/>
       </Hoist>
     )
 
