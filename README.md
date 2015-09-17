@@ -8,8 +8,8 @@ Embed and extract State from The React Tree
 import {Hoist,State} from 'react-hoisted-state'
 
 
-function visit(obj){
-  console.log(obj);
+function visit(obj,event){
+  console.log(obj,event); // events : ['update','mount','unmount']
 }
 
 React.render(
@@ -30,28 +30,26 @@ React.render(
 
 var keywords= [];
 
-function visit(obj){
-  if(obj.keywords) meta = meta.concat(keywords);
+function visit(obj,event){
+  if(obj.keywords) keywords = keywords.concat(keywords);
+  //`this` is the react component
 }
 
-const Keywords = ({[...keywords]})=>(
-<h2>
-  {keywords.join(', ')}
-  <State keywords={keywords}/>
-</h2>
+const Title = ({children})=>(
+<State title={children.toString()}/><h2>
+  {children.toString()}
+</h2></State>
 );
 
 
 const body = React.renderToString(
   <Hoist visit={getKeywords} />
     <article>
-      <Keywords keywords={['react','test','hoisted-state']} />
       <Title>How to Hoist State</Title>
       foo
     </article>
 
     <article>
-      <Keywords keywords={['another article']} />
       <Title>some other article </Title>
       bar
     </article>
@@ -61,7 +59,6 @@ const body = React.renderToString(
 const html = `
 <html>
 <head>
-<meta name="keywords" content="${keywords.join(', ')}" />
 <title>titles.join(' - ')</title>
 </head>
 <body>${body}</body>

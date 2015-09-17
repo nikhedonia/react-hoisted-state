@@ -31,7 +31,11 @@ var State = (function (_Component) {
     key: 'render',
     value: function render() {
       this.context && this.context.hoistedState && this.context.hoistedState.set.call(this, this.props);
-      return null;
+      return _react2['default'].createElement(
+        'div',
+        null,
+        this.props.children
+      );
     }
   }], [{
     key: 'contextTypes',

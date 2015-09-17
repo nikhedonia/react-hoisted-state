@@ -7,14 +7,27 @@ export class State extends Component {
     hoistedState: PropTypes.object,
   }
 
-  render () {
+  componentDidMount () {
+    notify('mount');
+  }
+
+  componentWillUnmount () {
+    notify('unmount');
+  }
+
+  notify (event) {
     this.context &&
     this.context.hoistedState &&
     this.context.hoistedState.set.call(
          this,
-         this.props
+         this.props,
+         event
     );
-    return null;
+  }
+
+  render () {
+    this.notify('update');
+    return <div>{this.props.children}</div>
   }
 }
 
