@@ -28,9 +28,24 @@ var State = (function (_Component) {
   }
 
   _createClass(State, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      notify('mount');
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      notify('unmount');
+    }
+  }, {
+    key: 'notify',
+    value: function notify(event) {
+      this.context && this.context.hoistedState && this.context.hoistedState.set.call(this, this.props, event);
+    }
+  }, {
     key: 'render',
     value: function render() {
-      this.context && this.context.hoistedState && this.context.hoistedState.set.call(this, this.props);
+      this.notify('update');
       return _react2['default'].createElement(
         'div',
         null,

@@ -1,4 +1,4 @@
-import {Hoist,State} from '../src/index'
+import {Hoist,State} from '../index'
 import React, {renderToString} from 'react'
 
 
